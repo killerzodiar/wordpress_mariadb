@@ -1,0 +1,16 @@
+Intrucciones del uso del contenedor:
+- Inicia los servicios de apache y mariadb
+	service apache2 start
+	service mysql start
+- Crea la base de datos y los usuarios para poder acceder a la base de datos:
+	mysql -u root -e "CREATE DATABASE bdword CHARACTER SET utf8 COLLATE utf8_Spanish_ci;"
+	mysql -u root -e "CREATE USER 'uword'@'bdword' identified by 'uword';"
+	mysql -u root -e "GRANT ALL PRIVILEGES ON bdword.* to 'uword' IDENTIFIED BY 'uword';"
+	mysql -u root -e "FLUSH PRIVILEGES;"
+- Luego reinicia apache:
+	service apache2 restart
+
+- Si has usado las mismas opciones que yo especifico aqui tienes el archivo wp-config.php para 
+copia y pegar en /var/www/html/wordpress. Si no tambien puedes modificar los aparatados referentes 
+a la base de datos y el usuario.
+
